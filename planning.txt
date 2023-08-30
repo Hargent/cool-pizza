@@ -1,0 +1,38 @@
+Project requirements
+    - user can order one or more pizzas from a menu
+    - requires no user account and no login
+    - pizza menu can change so it should be loaded frm an API
+    - users can add multiple pizzas to CART  before ordering
+    - ordering requires name, phone number and delivery address
+    - if possible, GPS location should be provided
+    - users can mark their order as "priority" for an additional 20% of the cart price
+    - orders are made by sending POST request with the order data (user data + order data) to the API
+    - payments are made on delivery, no payment processing is necessary in the app
+    - each order will get a unique ID that should be displayed so the user can later look up their order based on the ID
+    - user should be able to mark their order as "priority" even after the order has been placed 
+
+
+
+FEATURE CATEGORIES
+    - user
+    - menu
+    - cart
+    - order
+
+PAGES
+    - HomePage {"/"}
+    - Pizza menu {"/menu"}
+    - Cart {"/cart"}
+    - Placing new order {"/order/new"}
+    - Looking up order {"/order/:orderID"}
+
+STATE MANAGEMENT AND TECH DECISIONS
+    - user ==> Global UI state (no accounts)
+    - menu ==> Global remote state (menu is fetched from API)
+    - cart ==> Global UI state 
+    - order ==> Global remote state (fetched and submitted to API)
+
+    Routing                 ==> ReactRouter
+    Styling                 ==> tailwindCss
+    Remote state management ==> ReactRouter
+    UI state management     ==> Redux
