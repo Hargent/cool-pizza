@@ -8,14 +8,19 @@ import React from "react";
 const AppLayout: React.FC = () => {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
+console.log(isLoading);
 
   return (
-    <div className="layout">
+    <div className="grid grid-rows-[auto_1fr_auto] h-screen ">
+
       {isLoading && <Loader />}
       <Header />
-      <main>
+      <div className=" overflow-scroll">
+
+      <main className=" max-w-3xl m-auto ">
         <Outlet />
       </main>
+      </div>
       <CartOverview />
     </div>
   );

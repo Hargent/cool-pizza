@@ -1,18 +1,22 @@
+import Button from "../../UI/button/button";
 import { CART_ITEM } from "../../types/data-types";
 import formatCurrency from "../../utils/helpers/format-currency";
-
-const CartItem: React.FC = ({ item }: CART_ITEM) => {
-  const { pizzaId, name, quantity, totalPrice } = item;
+type Props ={
+  item:CART_ITEM
+}
+const CartItem: React.FC<Props> = (props:Props) => {
+  const { pizzaId, name, quantity, totalPrice } = props.item;
 
   console.log(pizzaId);
 
   return (
-    <li>
-      <p>
+    <li className=" py-3 sm:flex sm:items-center sm:justify-between">
+      <p className=" mb-1 sm:mb-0">
         {quantity}&times; {name}
       </p>
-      <div>
-        <p>{formatCurrency(totalPrice)}</p>
+      <div className=" flex justify-between items-center sm:gap-6">
+        <p className=" text-sm font-bold">{formatCurrency(totalPrice)}</p>
+        <Button type="small">Delete</Button>
       </div>
     </li>
   );

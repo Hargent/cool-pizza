@@ -1,3 +1,5 @@
+import { CREATE_ORDER_TYPE, ORDER_ITEM_TYPE } from "../types/data-types";
+
 const API_URL = 'https://react-fast-pizza-api.onrender.com/api';
 
 export async function getMenu() {
@@ -10,7 +12,7 @@ export async function getMenu() {
   return data;
 }
 
-export async function getOrder(id:number) {
+export async function getOrder(id:string) {
   const res = await fetch(`${API_URL}/order/${id}`);
   if (!res.ok) throw Error(`Couldn't find order #${id}`);
 
@@ -18,7 +20,7 @@ export async function getOrder(id:number) {
   return data;
 }
 
-export async function createOrder(newOrder) {
+export async function createOrder(newOrder:CREATE_ORDER_TYPE) {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: 'POST',
@@ -36,7 +38,7 @@ export async function createOrder(newOrder) {
   }
 }
 
-export async function updateOrder(id, updateObj) {
+export async function updateOrder(id:number, updateObj:ORDER_ITEM_TYPE) {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
       method: 'PATCH',

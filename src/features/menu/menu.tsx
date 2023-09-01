@@ -7,7 +7,7 @@ const Menu: React.FC = () => {
   const menuData = useLoaderData() as PIZZA_TYPE[];
 
   return (
-    <ul>
+    <ul className=" divide-y divide-stone-200 px-2">
       {menuData.map((data) => (
         <MenuItem pizza={data} key={data.id} />
       ))}
