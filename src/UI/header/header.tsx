@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       >
         <img
           className=" rounded-full w-10"
-          src="/public/pizza-2.jpeg"
+          src="/pizza-2.jpeg"
           alt="Hot Pizza"
         />
         <SearchOrder />
