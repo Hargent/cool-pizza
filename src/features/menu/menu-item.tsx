@@ -1,6 +1,6 @@
 import { CART_ITEM, MENU_ITEM } from "../../utils/types/data-types";
 import { addItem, getCurrentQuantityById } from "../cart/cart-slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hook/reducer-hooks";
 
 import Button from "../../UI/button/button";
 import ButtonDelete from "../../UI/button-delete/button-delete";
@@ -9,7 +9,7 @@ import formatCurrency from "../../utils/helpers/format-currency";
 
 function MenuItem({ pizza }: MENU_ITEM) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
-const dispatch = useDispatch()
+const dispatch = useAppDispatch()
   const handleAddToCart = () => {
     const newItem: CART_ITEM = {
       pizzaId: id,
@@ -21,7 +21,7 @@ const dispatch = useDispatch()
     dispatch(addItem(newItem))
   }
   
-  const currentQuantity = useSelector(getCurrentQuantityById(id))
+  const currentQuantity = useAppSelector(getCurrentQuantityById(id))
   const isInCart = currentQuantity >0
 
 

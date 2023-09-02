@@ -6,7 +6,7 @@ import { useRouteError } from "react-router-dom";
 const Error: React.FC = () => {
   
   const error = useRouteError() as ERROR_TYPE;
-  // console.log(error);
+  
 
   return (
     <div>

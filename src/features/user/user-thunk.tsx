@@ -22,11 +22,9 @@ const fetchAddress = createAsyncThunk("user/fetchAddress", async () => {
   const address = `${addressObj?.locality}, ${addressObj?.city} ${addressObj?.postcode}, ${addressObj?.countryName}`;
 
   // 3) Then we return an object with the data that we are interested in
-  // console.log(position ,address+ "the position and address of the geolocation");
-  
+ 
   return { position, address };
 })
-console.log(typeof fetchAddress);
 
 
 export default fetchAddress 

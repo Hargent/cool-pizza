@@ -2,7 +2,7 @@ import { decreaseQuantity, increaseQuantity } from '../../features/cart/cart-sli
 
 import Button from '../button/button'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '../../redux/hook/reducer-hooks'
 
 type Props = {
     pizzaId: number,
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const UpdateItemQuantity:React.FC<Props> = ({ pizzaId,currentQuantity }: Props) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const handleDecreaseItemQuantity = () => { 
       if (!pizzaId) return
   

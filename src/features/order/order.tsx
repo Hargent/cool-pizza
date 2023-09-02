@@ -30,10 +30,6 @@ const Order: React.FC = () => {
     cart
   } = orderData;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
-  // console.log(orderData, "order data received from router fetching");
-
-
-
   return (
     <div className=" px-4 py-6 space-y-8">
       <div className="flex items-center justify-between flex-wrap gap-2">
@@ -62,7 +58,7 @@ const Order: React.FC = () => {
         {priority && <p className=" text-sm font-medium text-stone-600">Price priority: {formatCurrency(priorityPrice)}</p>}
         <p className=" font-bold">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
       </div>
-      {! priority && <UpdatePriority order={orderData}/> }
+      {! priority && <UpdatePriority /> }
     </div>
   );
 };

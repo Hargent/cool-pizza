@@ -13,7 +13,7 @@ const SearchOrder: React.FC = () => {
     if (!query) return;
     navigate(`/order/${query}`);
     setQuery("");
-    // console.log(query);
+  
   }
 
   return (

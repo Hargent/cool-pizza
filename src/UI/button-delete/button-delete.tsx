@@ -1,5 +1,5 @@
 import { decreaseQuantity, deleteItem, getCurrentQuantityById } from '../../features/cart/cart-slice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../redux/hook/reducer-hooks'
 
 import Button from '../button/button'
 import React from 'react'
@@ -9,8 +9,8 @@ type Props = {
 }
 
 const ButtonDelete: React.FC<Props>= ({ pizzaId }:Props) => {
-    const dispatch = useDispatch()
-  const currentQuantity = useSelector(getCurrentQuantityById(pizzaId))
+    const dispatch = useAppDispatch()
+  const currentQuantity = useAppSelector(getCurrentQuantityById(pizzaId))
 
   
   const handleDeleteItem = () => { 

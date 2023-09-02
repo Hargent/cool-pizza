@@ -1,8 +1,8 @@
+import { ActionFunction, LoaderFunction, redirect } from "react-router-dom";
 import { createOrder, getOrder } from "../../services/api-restaurant";
 
 import { CREATE_ORDER_TYPE } from "../../utils/types/data-types";
 import { clearCart } from "../cart/cart-slice";
-import { redirect } from "react-router-dom";
 import store from "../../redux/store";
 
 // https://uibakery.io/regex-library/phone-number
@@ -11,12 +11,11 @@ const isValidPhone = (str: string) =>
     str
   );
 
-const action = async ({ request }) => {
-  console.log(request + "logged in action for createBrowserRouter");
+const action:ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  console.log(typeof formData, "the request tpe cast");
 
-  const data = Object.fromEntries(formData);
+  const data = Object.fromEntries(formData) as {[key:string]:string}
+
   const errors = {} as { [key: string]: string };
   if (!isValidPhone(data.phone)) {
     errors.phone =
@@ -30,16 +29,20 @@ const action = async ({ request }) => {
   } as CREATE_ORDER_TYPE;
  
   const createdOrder = await createOrder(newOrder);
-    console.log(createdOrder, "final form of order created");
     
     // Do Not overuse
     store.dispatch(clearCart())
 
   return redirect(`/order/${createdOrder.id}`);
 };
-export const loader = async ({ params }) => {
-  console.log(params + "logged in loader for createBrowserRouter");
-  const data = await getOrder(params.orderID);
-  return data;
+export const loader: LoaderFunction = async ({ params }) => {
+if (params.orderID) {
+        
+        const data = await getOrder(params.orderID)
+        return data
+    }
+    // const data = await getOrder(params?.orderID??"")
+    // return data
+  
 };
 export  {action}

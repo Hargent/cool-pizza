@@ -38,7 +38,7 @@ export async function createOrder(newOrder:CREATE_ORDER_TYPE) {
   }
 }
 
-export async function updateOrder(id:number, updateObj:{[key:string]:string|boolean}) {
+export async function updateOrder(id:string, updateObj:{[key:string]:string|boolean}) {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
       method: 'PATCH',

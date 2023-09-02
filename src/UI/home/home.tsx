@@ -2,10 +2,10 @@ import Button from "../button/button";
 import CreateUser from "../../features/user/create-user";
 import React from "react";
 import { State } from "../../utils/types/state-types";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/hook/reducer-hooks";
 
 const Home: React.FC = () => {
-  const userName = useSelector((state:State)=>state.user.userName)
+  const userName = useAppSelector((state:State)=>state.user.userName)
 
   return (
     <div className=" my-10 sm:my-16 text-center px-4">

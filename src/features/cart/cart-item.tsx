@@ -3,7 +3,7 @@ import { CART_ITEM } from "../../utils/types/data-types";
 import UpdateItemQuantity from "../../UI/update-item-quantity/update-item-quantity";
 import formatCurrency from "../../utils/helpers/format-currency";
 import { getCurrentQuantityById } from "./cart-slice";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/hook/reducer-hooks";
 
 type Props ={
   item: CART_ITEM,
@@ -12,7 +12,7 @@ type Props ={
 const CartItem: React.FC<Props> = (props:Props) => {
   const { pizzaId, name, quantity, totalPrice } = props.item;
 
-const currentQuantity =useSelector(getCurrentQuantityById(pizzaId))
+  const currentQuantity = useAppSelector(getCurrentQuantityById(pizzaId))
   return (
     <li className=" py-3 sm:flex sm:items-center sm:justify-between">
       <p className=" mb-1 sm:mb-0">

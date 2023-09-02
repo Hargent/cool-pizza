@@ -2,7 +2,7 @@
 
 import { Form, useActionData, useNavigation } from "react-router-dom";
 import { getCart, getTotalCartPrice } from "../cart/cart-slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hook/reducer-hooks";
 
 import Button from "../../UI/button/button";
 import EmptyCart from "../cart/empty-cart";
@@ -14,27 +14,25 @@ import { getUserName } from "../user/user-slice";
 import { useState } from "react";
 
 const CreateOrder: React.FC = () => {
-  const cart = useSelector(getCart)
+  const cart = useAppSelector(getCart)
   const [withPriority, setWithPriority] = useState(false);
 
   
   const navigation = useNavigation();
   const isCreating = navigation.state === "loading";
-  const userName = useSelector(getUserName)
+  const userName = useAppSelector(getUserName)
 
-  const totalCartPrice = useSelector(getTotalCartPrice) 
+  const totalCartPrice = useAppSelector(getTotalCartPrice) 
   const priorityPrice = withPriority?(.2*totalCartPrice): 0;
   const totalPrice = totalCartPrice + priorityPrice
   // getting error data
-  const dispatch  = useDispatch() 
+  const dispatch  = useAppDispatch() 
   const formErrors = useActionData() as { [key: string]: string };
   const handleGetPosition = (e: React.FormEvent) => {
-    console.log("going for geolocation now....");
-    
     e.preventDefault()
     dispatch(fetchAddress())
   }
-const {status:addressStatus,position,address,error:errorMessage} =useSelector((state:State)=>state.user)
+const {status:addressStatus,position,address,error:errorMessage} =useAppSelector((state:State)=>state.user)
   const isLoadingAddress = addressStatus === 'loading'
   
   if (!cart.length) return <EmptyCart />

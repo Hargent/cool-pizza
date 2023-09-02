@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 import Button from "../../UI/button/button";
 import { updateName } from "./user-slice";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../redux/hook/reducer-hooks";
 import { useNavigate } from "react-router-dom";
 
 const CreateUser: React.FC = () => {
   const [username, setUsername] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();

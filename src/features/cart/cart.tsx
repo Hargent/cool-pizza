@@ -1,5 +1,5 @@
 import { clearCart, getCart } from "./cart-slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hook/reducer-hooks";
 
 import Button from "../../UI/button/button";
 import CartItem from "./cart-item";
@@ -8,9 +8,9 @@ import LinkButton from "../../UI/link-button/link-button";
 import { getUserName } from "../user/user-slice";
 
 function Cart() {
-  const cart = useSelector(getCart)
-  const userName = useSelector(getUserName)
-const dispatch = useDispatch()
+  const cart = useAppSelector(getCart)
+  const userName = useAppSelector(getUserName)
+const dispatch = useAppDispatch()
   const handleClearCart = () => {
     dispatch(clearCart())
   }

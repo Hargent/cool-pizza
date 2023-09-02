@@ -1,7 +1,12 @@
+import { ActionFunction } from "react-router-dom";
 import { updateOrder } from "../../services/api-restaurant";
 
-export async function action({ params}) {
+const action:ActionFunction = async({ params})=> {
     const data = { priority: true }
-    await updateOrder(params.orderID,data)
+    if (params.orderID) {
+        
+        await updateOrder(params.orderID ,data)
+    }
     return null
 }
+export {action}
