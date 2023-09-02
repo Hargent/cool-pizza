@@ -1,5 +1,5 @@
 import MenuItem from "./menu-item";
-import { PIZZA_TYPE } from "../../types/data-types";
+import { PIZZA_TYPE } from "../../utils/types/data-types";
 import { getMenu } from "../../services/api-restaurant";
 import { useLoaderData } from "react-router-dom";
 

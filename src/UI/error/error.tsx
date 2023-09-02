@@ -1,4 +1,4 @@
-import { ERROR_TYPE } from "../../types/router-types";
+import { ERROR_TYPE } from "../../utils/types/router-types";
 import LinkButton from '../link-button/link-button';
 import React from "react";
 import { useRouteError } from "react-router-dom";

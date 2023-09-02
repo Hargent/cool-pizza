@@ -33,7 +33,7 @@ interface ORDER_ITEM_TYPE {
   customer: string;
   phone: string;
   address: string;
-  priority: true;
+  priority: boolean;
   estimatedDelivery: string;
   cart: CART_ITEM_TYPE[];
   position: string;
@@ -42,7 +42,7 @@ interface ORDER_ITEM_TYPE {
 }
 interface ORDER_TYPE {
   item: 
-    { quantity:number, name:string, totalPrice:number }
+    { quantity:number, name:string, totalPrice:number,pizzaId:number }
   ;
 
   isLoadingIngredients: boolean;
@@ -60,7 +60,8 @@ interface CART_ITEM {
     pizzaId: number;
     name: string;
     quantity: number;
-    totalPrice: number;
+  totalPrice: number;
+  unitPrice:number
   
   
 }

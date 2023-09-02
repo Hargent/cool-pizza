@@ -1,4 +1,4 @@
-import { COORDINATE_TYPE, POSITION_TYPE } from "../types/data-types";
+import { COORDINATE_TYPE, POSITION_TYPE } from "../utils/types/data-types";
 
 const getAddress = async ({ latitude, longitude }:COORDINATE_TYPE)=> {
   const res = await fetch(

@@ -1,4 +1,4 @@
-import { CREATE_ORDER_TYPE, ORDER_ITEM_TYPE } from "../types/data-types";
+import { CREATE_ORDER_TYPE } from "../utils/types/data-types";
 
 const API_URL = 'https://react-fast-pizza-api.onrender.com/api';
 
@@ -38,7 +38,7 @@ export async function createOrder(newOrder:CREATE_ORDER_TYPE) {
   }
 }
 
-export async function updateOrder(id:number, updateObj:ORDER_ITEM_TYPE) {
+export async function updateOrder(id:number, updateObj:{[key:string]:string|boolean}) {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
       method: 'PATCH',

@@ -6,7 +6,7 @@ type Props = {
     children : string
     to?:string
   type: string,
-  onClick?: () => void,
+  onClick?: (e: React.FormEvent) => void,
  
   disabled?: boolean
 }
@@ -22,18 +22,19 @@ const styles:Styles = {
   secondary:"text-sm uppercase border-2 border-stone-300 py-2.5 px-4 sm:px-6 sm:py-3.5 font-semibold text-stone-400 inline-block  tracking-wide rounded-full hover:text-stone-800 hover:bg-stone-300 transition-colors focus:text-stone-800 focus:outline-none focus:ring focus:ring-stone-200 focus:ring-offset-2 disabled:cursor-not-allowed "
   ,round:`${base} py-1 px-2 md:px-3 md:py-1.5 text-sm`
 }
-const Button:React.FC<Props> = ({disabled,children,to,type,onClick}: Props) => {
+const LocationButton:React.FC<Props> = ({disabled,children,to,type,onClick}: Props) => {
   return ( to?
     <Link to={to} className={styles[type]}>{children}</Link>
 
     :
     onClick?
-    <button disabled={disabled}  onClick={onClick}  className={styles[type]}>
+        <button disabled={disabled} type='submit'  onClick={onClick}  className={styles[type]}>
             {children}
-          </button>:<button disabled={disabled}  className={styles[type]}>
+          </button> :
+          <button disabled={disabled} className={styles[type]}>
             {children}
           </button>
   )
 }
 
-export default Button
+export default LocationButton
